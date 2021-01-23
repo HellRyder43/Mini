@@ -14,7 +14,7 @@ namespace Mini
 {
     public partial class GroupStudent : Form
     {
-        SqlConnection conn = new SqlConnection(@"Server=HELLRYDER;Database=ProjectA;Integrated Security=True;");
+        readonly SqlConnection conn = new SqlConnection(@"Server=HELLRYDER;Database=ProjectA;Integrated Security=True;");
         SqlCommand cmd;
         SqlDataAdapter prog;
         public GroupStudent()
