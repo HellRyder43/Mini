@@ -43,7 +43,7 @@ namespace Mini
             }
 
 
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in dataGridView.Rows)
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
@@ -52,7 +52,7 @@ namespace Mini
             }
 
             var savefiledialoge = new SaveFileDialog();
-            savefiledialoge.FileName = filename;
+            savefiledialoge.FileName = filename + DateTime.Now.ToString();
             savefiledialoge.DefaultExt = ".pdf";
             if (savefiledialoge.ShowDialog() == DialogResult.OK)
             {
@@ -66,143 +66,8 @@ namespace Mini
                     stream.Close();
                 }
             }
-
         }
-
-
-        public void exportGridToPDF1(DataGridView dataGridView, string filename)
-        {
-            BaseFont bf = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, BaseFont.EMBEDDED);
-            PdfPTable pdftable = new PdfPTable(dataGridView.Columns.Count);
-            pdftable.DefaultCell.Padding = 3;
-            pdftable.WidthPercentage = 100;
-            pdftable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdftable.DefaultCell.BorderWidth = 1;
-            iTextSharp.text.Font text = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
-            //Add header
-            foreach (DataGridViewColumn col in dataGridView.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(col.HeaderText, text));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                pdftable.AddCell(cell);
-            }
-
-
-            foreach (DataGridViewRow row in dataGridView2.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
-                }
-            }
-
-            var savefiledialoge = new SaveFileDialog();
-            savefiledialoge.FileName = filename;
-            savefiledialoge.DefaultExt = ".pdf";
-            if (savefiledialoge.ShowDialog() == DialogResult.OK)
-            {
-                using (FileStream stream = new FileStream(savefiledialoge.FileName, FileMode.Create))
-                {
-                    Document pdfdoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                    PdfWriter.GetInstance(pdfdoc, stream);
-                    pdfdoc.Open();
-                    string str = string.Format("Date: {0}", DateTime.Now);
-                    pdfdoc.Add(pdftable);
-                    pdfdoc.Close();
-                    stream.Close();
-                }
-            }
-
-        }
-        public void exportGridToPDF2(DataGridView dataGridView, string filename)
-        {
-            BaseFont bf = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, BaseFont.EMBEDDED);
-            PdfPTable pdftable = new PdfPTable(dataGridView.Columns.Count);
-            pdftable.DefaultCell.Padding = 3;
-            pdftable.WidthPercentage = 100;
-            pdftable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdftable.DefaultCell.BorderWidth = 1;
-            iTextSharp.text.Font text = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
-            //Add header
-            foreach (DataGridViewColumn col in dataGridView.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(col.HeaderText, text));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                pdftable.AddCell(cell);
-            }
-
-
-            foreach (DataGridViewRow row in dataGridView3.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
-                }
-            }
-
-            var savefiledialoge = new SaveFileDialog();
-            savefiledialoge.FileName = filename;
-            savefiledialoge.DefaultExt = ".pdf";
-            if (savefiledialoge.ShowDialog() == DialogResult.OK)
-            {
-                using (FileStream stream = new FileStream(savefiledialoge.FileName, FileMode.Create))
-                {
-                    Document pdfdoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                    PdfWriter.GetInstance(pdfdoc, stream);
-                    pdfdoc.Open();
-                    string str = string.Format("Date: {0}", DateTime.Now);
-                    pdfdoc.Add(pdftable);
-                    pdfdoc.Close();
-                    stream.Close();
-                }
-            }
-
-        }
-
-        public void exportGridToPDF3(DataGridView dataGridView, string filename)
-        {
-            BaseFont bf = BaseFont.CreateFont(BaseFont.COURIER, BaseFont.CP1252, BaseFont.EMBEDDED);
-            PdfPTable pdftable = new PdfPTable(dataGridView.Columns.Count);
-            pdftable.DefaultCell.Padding = 3;
-            pdftable.WidthPercentage = 100;
-            pdftable.HorizontalAlignment = Element.ALIGN_LEFT;
-            pdftable.DefaultCell.BorderWidth = 1;
-            iTextSharp.text.Font text = new iTextSharp.text.Font(bf, 10, iTextSharp.text.Font.NORMAL);
-            //Add header
-            foreach (DataGridViewColumn col in dataGridView.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(col.HeaderText, text));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                pdftable.AddCell(cell);
-            }
-
-
-            foreach (DataGridViewRow row in dataGridView5.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
-                }
-            }
-
-            var savefiledialoge = new SaveFileDialog();
-            savefiledialoge.FileName = filename;
-            savefiledialoge.DefaultExt = ".pdf";
-            if (savefiledialoge.ShowDialog() == DialogResult.OK)
-            {
-                using (FileStream stream = new FileStream(savefiledialoge.FileName, FileMode.Create))
-                {
-                    Document pdfdoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                    PdfWriter.GetInstance(pdfdoc, stream);
-                    pdfdoc.Open();
-                    string str = string.Format("Date: {0}", DateTime.Now);
-                    pdfdoc.Add(pdftable);
-                    pdfdoc.Close();
-                    stream.Close();
-                }
-            }
-
-        }
+      
         private void ViewReport_Load(object sender, EventArgs e)
         {
             DataTable data = new DataTable();
@@ -259,22 +124,22 @@ namespace Mini
 
         private void button4_Click(object sender, EventArgs e)
         {
-            exportGridToPDF(dataGridView1, "Generate pdf");
+            exportGridToPDF(dataGridView1, "Generate pdf_");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            exportGridToPDF1(dataGridView2, "Generate pdf");
+            exportGridToPDF(dataGridView2, "Generate pdf_");
         }
 
         private void AddB_Click(object sender, EventArgs e)
         {
-            exportGridToPDF2(dataGridView3, "Generate pdf");
+            exportGridToPDF(dataGridView3, "Generate pdf_");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            exportGridToPDF3(dataGridView5, "Generate pdf");
+            exportGridToPDF(dataGridView5, "Generate pdf_");
         }
     }
 }
