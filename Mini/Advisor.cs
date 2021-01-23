@@ -123,8 +123,14 @@ namespace Mini
                 v2 = int.Parse(reader1[0].ToString());
             }
 
-            string per = "INSERT into Person(FirstName , LastName , Contact, Email , DateOfBirth , Gender) values ('" + FNT.Text + "' , '" + LNT.Text + "' , '" +CONT.Text + "' , '" + EMAILT.Text + "' , '" + DateTime.Parse(DOBT.Text) + "' , '" + v + "')";
+            string per = "INSERT into Person(FirstName, LastName, Contact, Email, DateOfBirth, Gender) values (@firstname,@lastname,@contact,@email,@dob,@gender)";
             SqlCommand persi = new SqlCommand(per, conn);
+            persi.Parameters.AddWithValue("@firstname", FNT.Text);
+            persi.Parameters.AddWithValue("@lastname", LNT.Text);
+            persi.Parameters.AddWithValue("@contact", CONT.Text);
+            persi.Parameters.AddWithValue("@email", EMAILT.Text);
+            persi.Parameters.AddWithValue("@dob", DateTime.Parse(DOBT.Text));
+            persi.Parameters.AddWithValue("@gender", v);
             int ii = persi.ExecuteNonQuery();
             int value1 = 0;
             string query = "Select Id from Person where (Id = SCOPE_IDENTITY())";
