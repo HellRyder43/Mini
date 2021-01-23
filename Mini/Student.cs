@@ -131,7 +131,12 @@ namespace Mini
 
         private void updateB_Click(object sender, EventArgs e)
         {
-            if (firstNameT.Text != "" && LastNameT.Text != "" && contactT.Text != "" && emailT.Text != "" && dobT.Text != "")
+            var textBoxCollection = new[] { firstNameT, LastNameT, contactT, emailT };
+
+            bool atleastOneTextboxEmpty = textBoxCollection
+                                               .Any(t => String.IsNullOrEmpty(t.Text));
+
+            if (!atleastOneTextboxEmpty)
             {
                 cmd = new SqlCommand("update Person set FirstName=@firstName,LastName=@lastName, Contact=@Contact, Email=@email, DateOfBirth=@dob, Gender=@gender where Id=@id", conn);
                 conn.Open();
