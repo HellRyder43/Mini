@@ -77,7 +77,6 @@ namespace Mini
                     Document pdfdoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
                     PdfWriter.GetInstance(pdfdoc, stream);
                     pdfdoc.Open();
-                    string str = string.Format("Date: {0}", DateTime.Now);
                     pdfdoc.Add(pdftable);
                     pdfdoc.Close();
                     stream.Close();
