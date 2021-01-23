@@ -82,7 +82,6 @@
             this.label3.Size = new System.Drawing.Size(66, 19);
             this.label3.TabIndex = 2;
             this.label3.Text = "Contact";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -157,7 +156,6 @@
             this.CONT.Name = "CONT";
             this.CONT.Size = new System.Drawing.Size(100, 20);
             this.CONT.TabIndex = 10;
-            this.CONT.TextChanged += new System.EventHandler(this.CONT_TextChanged);
             this.CONT.Validating += new System.ComponentModel.CancelEventHandler(this.CONT_Validating);
             // 
             // EMAILT
